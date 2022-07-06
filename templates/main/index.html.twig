@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+           
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                 <div class="count">
+                      Vous avez   {{ produit.getTotalItemCount }} produits au total!
+                 </div>
+                 <div class="row row-cols-1 row-cols-md-4 g-4">
+                 {% for produit in produit %}
+                    <div class="col">
+                        <div class="card">
+                            <img  src="{{ vich_uploader_asset(produit, 'imageFile') }}"  class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: black">Nom: {{produit.nom}}</h5>
+                                <h6 class="card-title" style="color: blue">Catégorie: {{produit.categories}}</h6>
+                                <p class="card-text">Description : {{produit.description}}</p>
+                                <a href="{{ path('app_produitdetails', {id: produit.id}) }}" class="btn btn-primary">Détails</a>
+                            </div>
+                        </div>
+                    </div>
+                        
+                 {% endfor %}   
+                 </div>
+                  <div class="navigation d-flex justify-content-center">
+                    {{ knp_pagination_render(produit) }}
+                  </div>  
+                </div>
+                <!-- /.container-fluid -->
+          
+  
+{% endblock %}

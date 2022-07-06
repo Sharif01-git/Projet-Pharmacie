@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+{% block body %}
+               
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <h1>Liste des catégories</h1>
+                    <div class="count">
+                      Vous avez   {{ categorie.getTotalItemCount }} catégories au total!
+                    </div>
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                         <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                             Id
+                            </th>
+                            <th>
+                              Nom
+                            </th>
+                            <th>
+                               Description
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for categorie in categorie %}
+                        
+                            <tr>
+                                <td>
+                                   {{categorie.id}}
+                                </td>
+                                <td>
+                                   {{categorie.nom}}
+                                </td>
+                                <td>
+                                  {{categorie.description}}
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ path('app_categorieEdit', {id: categorie.id}) }}">Modifier</a>| 
+                                    <a class="btn btn-info" href="{{ path('app_categoriedetails', {id: categorie.id}) }}">Details</a> 
+                                  <!--  <a class="btn btn-danger" href="{{ path('app_categoriedelete', {id: categorie.id}) }}">Delete</a> -->
+                                </td>
+                            </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation d-flex justify-content-center">
+                    {{ knp_pagination_render(categorie) }}
+                </div>
+                        
+                    
+                </div>
+                <!-- /.container-fluid -->
+          
+  
+{% endblock %}

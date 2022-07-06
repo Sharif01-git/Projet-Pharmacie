@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification-produit{% endblock %}
+
+{% block body %}
+               
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                   
+                <h1>Modifier un produit</h1>
+                  {{ form_start(form) }}
+                    {{ form_row(form.nom) }}
+                     <div class="for-error">
+                        {{ form_errors(form) }}
+                    </div>
+                    {{ form_row(form.description) }}
+                     <div class="for-error">
+                        {{ form_errors(form) }}
+                    </div>
+                    {{ form_row(form.prix) }}
+                      <div class="for-error">
+                        {{ form_errors(form) }}
+                      </div>
+                    {{ form_row(form.stock) }}
+                      <div class="for-error">
+                        {{ form_errors(form) }}
+                      </div>
+                    {{ form_row(form.categories) }}
+                      <div class="for-error">
+                          {{ form_errors(form) }}
+                      </div>
+                    {{ form_row(form.imageFile) }}
+                    {{ form_row(form.submit) }}
+                {{ form_end(form) }}
+
+                </div>
+                <!-- /.container-fluid --> 
+          
+  
+{% endblock %}

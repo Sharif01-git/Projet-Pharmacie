@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details-Produit{% endblock %}
+
+{% block body %}
+               
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                   
+                    <h1>Détails du produit</h1>
+                    <div class="card mb-3" style="max-width: 800px; height: 300px">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                        <img style="max_width: 500px; height: 300px;" src="{{ vich_uploader_asset(produit, 'imageFile') }}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color : black">Nom : {{ produit.nom }}</h5>
+                            <p class="card-text" style="color : black">Catégorie : {{ produit.categories }}</p>
+                            <p class="card-text" style="color : black">Description : {{ produit.description }}</p>
+                            <p class="card-text" style="color : black">Prix : {{ produit.prix }} €</p>
+                            <p class="card-text" style="color : black">Nombre en stock : {{ produit.stock }}</p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                     <a class="btn btn-primary" href="{{ path('app_produit')}}">Retour à la liste des produits</a>
+                </div>
+                <!-- /.container-fluid -->
+          
+  
+{% endblock %}

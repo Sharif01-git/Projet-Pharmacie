@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+               
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <h1>Liste des produits</h1>
+                    <div class="count">
+                      Vous avez   {{ produit.getTotalItemCount }} produits au total!
+                    </div>
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                         <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                             Id
+                            </th>
+                            <th>
+                              Nom
+                            </th>
+                             <th>
+                               Prix
+                            </th>
+                             <th>
+                             En stock
+                            </th>
+                             <th>
+                             Categories
+                            </th>
+                             <th>
+                             Images
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for produit in produit %}
+                        
+                            <tr>
+                                <td>
+                                   {{produit.id}}
+                                </td>
+                                <td>
+                                   {{produit.nom}}
+                                </td>
+                                 <td>
+                                   {{produit.prix}} €
+                                </td>
+                                 <td>
+                                   {{produit.stock}}
+                                </td>
+                                 <td>
+                                   {{produit.categories}}
+                                </td>
+                                 <td>
+                                  <img width="30" height="30" src="{{ vich_uploader_asset(produit, 'imageFile') }}">
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ path('app_produitedit', {id: produit.id}) }}">Modifier</a>| 
+                                    <a class="btn btn-info" href="{{ path('app_produitdetails', {id: produit.id}) }}">Details</a>|
+                                    <a class="btn btn-danger" href="{{ path('app_produitdelete', {id: produit.id}) }}">Delete</a>
+                                </td>
+                            </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                <div class="navigation d-flex justify-content-center">
+                    {{ knp_pagination_render(produit) }}
+                </div>
+                        
+                    
+                </div>
+                <!-- /.container-fluid -->
+          
+  
+{% endblock %}
